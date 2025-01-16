@@ -1,0 +1,9 @@
+{
+  "transaction_id": "0x1bc268afe7e57fc7dd363a367770cfdb7b6590d80c15e227d1b7eae535f1c66c",
+  "salt": "0xef73ed9e731b890b14bfcef54bfae9d389636c19823fcea8b16d538ea84d37d8",
+  "network_endpoint": "https://testnet.fuel.network/v1/graphql",
+  "chain_id": 0,
+  "contract_id": "0x48281fa674ca8e1a36f1488f717b1f9012bfa7ffdd4105ae83e0a1db17819ba1",
+  "deployment_size": 3160,
+  "deployed_block_height": 20983264
+}
