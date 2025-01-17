@@ -1,15 +1,35 @@
 contract;
 use std::{
     asset::*,
+    hash::*,
+    call_frames::msg_asset_id,
+    context::msg_amount,
 };
 
 abi WatchTransfer {
-    fn transfer_to_address(recipient: Address, asset_id: AssetId, amount: u64);
+    #[payable]
+    #[storage(read,write)]
+    fn watch(ID: u256 , recipient: Address);
+}
+
+pub struct SwapID {
+    num: u256
+}
+
+storage {
+    IDs: StorageMap<u256, bool> = StorageMap::<u256, bool> {},
 }
 
 impl WatchTransfer for Contract {
-
-    fn transfer_to_address(recipient: Address, asset_id: AssetId, amount: u64) {
-        transfer(Identity::Address(recipient), asset_id, amount);
+    #[payable]
+    #[storage(read,write)]
+    fn watch(ID: u256 , recipient: Address) {
+        let exists = storage.IDs.get(ID).try_read().unwrap_or(false);
+        require(!exists,"Id already exists");
+        storage.IDs.insert(ID, true);
+        transfer(Identity::Address(recipient), msg_asset_id(), msg_amount());
+        log( SwapID {
+            num: ID
+        })
     }
 }

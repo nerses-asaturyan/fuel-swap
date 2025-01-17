@@ -8,18 +8,22 @@
       "concreteTypeId": "2e38e77b22c314a449e91fafed92a43826ac6aa403ae6a8acb6cf58239fbaf5d"
     },
     {
-      "type": "struct std::address::Address",
-      "concreteTypeId": "f597b637c3b0f588fb8d7086c6f4735caa3122b85f0423b82e489f9bb58e2308",
+      "type": "str",
+      "concreteTypeId": "8c25cb3686462e9a86d2883c5688a22fe738b0bbc85f458d2d2b5f3f667c6d5a"
+    },
+    {
+      "type": "struct SwapID",
+      "concreteTypeId": "fe04d267f8e97aed4f214782e62e801a27fa2df26a2c7585be443083908a349d",
       "metadataTypeId": 1
     },
     {
-      "type": "struct std::asset_id::AssetId",
-      "concreteTypeId": "c0710b6731b1dd59799cf6bef33eee3b3b04a2e40e80a0724090215bbf2ca974",
+      "type": "struct std::address::Address",
+      "concreteTypeId": "f597b637c3b0f588fb8d7086c6f4735caa3122b85f0423b82e489f9bb58e2308",
       "metadataTypeId": 2
     },
     {
-      "type": "u64",
-      "concreteTypeId": "1506e6f44c1d6291cdf46395a8e573276a4fa79e8ace3fc891e092ef32d1b0a0"
+      "type": "u256",
+      "concreteTypeId": "1b5759d94094368cfd443019e7ca5ec4074300e544e5ea993a979f5da627261e"
     }
   ],
   "metadataTypes": [
@@ -28,17 +32,17 @@
       "metadataTypeId": 0
     },
     {
-      "type": "struct std::address::Address",
+      "type": "struct SwapID",
       "metadataTypeId": 1,
       "components": [
         {
-          "name": "bits",
-          "typeId": 0
+          "name": "num",
+          "typeId": "1b5759d94094368cfd443019e7ca5ec4074300e544e5ea993a979f5da627261e"
         }
       ]
     },
     {
-      "type": "struct std::asset_id::AssetId",
+      "type": "struct std::address::Address",
       "metadataTypeId": 2,
       "components": [
         {
@@ -52,24 +56,41 @@
     {
       "inputs": [
         {
+          "name": "ID",
+          "concreteTypeId": "1b5759d94094368cfd443019e7ca5ec4074300e544e5ea993a979f5da627261e"
+        },
+        {
           "name": "recipient",
           "concreteTypeId": "f597b637c3b0f588fb8d7086c6f4735caa3122b85f0423b82e489f9bb58e2308"
-        },
-        {
-          "name": "asset_id",
-          "concreteTypeId": "c0710b6731b1dd59799cf6bef33eee3b3b04a2e40e80a0724090215bbf2ca974"
-        },
-        {
-          "name": "amount",
-          "concreteTypeId": "1506e6f44c1d6291cdf46395a8e573276a4fa79e8ace3fc891e092ef32d1b0a0"
         }
       ],
-      "name": "transfer_to_address",
+      "name": "watch",
       "output": "2e38e77b22c314a449e91fafed92a43826ac6aa403ae6a8acb6cf58239fbaf5d",
-      "attributes": null
+      "attributes": [
+        {
+          "name": "payable",
+          "arguments": []
+        },
+        {
+          "name": "storage",
+          "arguments": [
+            "read",
+            "write"
+          ]
+        }
+      ]
     }
   ],
-  "loggedTypes": [],
+  "loggedTypes": [
+    {
+      "logId": "10098701174489624218",
+      "concreteTypeId": "8c25cb3686462e9a86d2883c5688a22fe738b0bbc85f458d2d2b5f3f667c6d5a"
+    },
+    {
+      "logId": "18303986129540053741",
+      "concreteTypeId": "fe04d267f8e97aed4f214782e62e801a27fa2df26a2c7585be443083908a349d"
+    }
+  ],
   "messagesTypes": [],
   "configurables": []
 }
