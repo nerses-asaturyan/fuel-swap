@@ -24,12 +24,13 @@ impl WatchTransfer for Contract {
     #[payable]
     #[storage(read,write)]
     fn watch(ID: u256 , recipient: Address) {
+        require(msg_amount() > 0,"Funds Not Sent");
         let exists = storage.IDs.get(ID).try_read().unwrap_or(false);
-        require(!exists,"Id already exists");
+        require(!exists,"Id Already Exists");
         storage.IDs.insert(ID, true);
-        transfer(Identity::Address(recipient), msg_asset_id(), msg_amount());
         log( SwapID {
             num: ID
-        })
+        });
+        transfer(Identity::Address(recipient), msg_asset_id(), msg_amount());
     }
 }

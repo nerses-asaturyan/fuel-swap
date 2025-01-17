@@ -5,7 +5,7 @@ import * as path from 'path';
 const filePath = path.join(__dirname, '../out/release/fuel-swap-abi.json');
 const contractAbi = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
-const contractAddressString = '0x4f519ce66a369184436335ee3f0cd186b344d447d1b97f3352315fc2ec300391';
+const contractAddressString = '0xfeb46d5e0191979fedacd515bd2c07897bceaf58a437902bf4f6ea56a0ed4dd8';
 
 async function getWalletBalances() {
   const provider = await Provider.create('https://testnet.fuel.network/v1/graphql');
@@ -14,7 +14,7 @@ async function getWalletBalances() {
   wallet.connect(provider);
 
   const contractAddress = Address.fromB256(contractAddressString);
-  const ID = 100;
+  const ID = 110;
   const recipient = { bits: Wallet.generate().address.toB256() };
   const asset_id = provider.getBaseAssetId(); 
 
@@ -27,7 +27,7 @@ const {waitForResult} = await contractInstance.functions.watch(ID,recipient)
         variableOutputs: 1,
       })
       .callParams({
-          forward: [100, asset_id],
+          forward: [0, asset_id],
         })
       .call()
 
